@@ -24,10 +24,29 @@ class Book {
   sell(numCopiesSold = 1) {
     this.numCopies -= numCopiesSold;
   }
-  
+
   restock(numCopiesStocked = 5) {
     this.numCopies += numCopiesStocked;
   }
 }
 
 // Write your code here
+class TechnicalBook extends Book {
+  constructor(title, author, ISBN, numCopies, edition) {
+    super(title, author, ISBN, numCopies);
+    this.edition = edition;
+  }
+
+  get currentEdition() {
+    return this.getEdition();
+  }
+
+  getEdition() {
+    return `The current edition is ${this.edition}`;
+  }
+}
+
+const JavaScript = new TechnicalBook("Modern Javascript", "Wes Bos", "12345", 100, "1.0.1");
+console.log(JavaScript);
+console.log(JavaScript.availability);
+console.log(JavaScript.getEdition());
